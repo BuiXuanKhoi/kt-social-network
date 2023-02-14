@@ -1,6 +1,5 @@
 package com.example.socialnetworkproject.models.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -50,6 +49,12 @@ public class Users {
 
     @OneToMany(mappedBy = "followed", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Follow> followeds;
+
+    @OneToMany(mappedBy = "requestFrom", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Requests> requestFrom;
+
+    @OneToMany(mappedBy = "requestTo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Requests> requestTo;
 
 
 

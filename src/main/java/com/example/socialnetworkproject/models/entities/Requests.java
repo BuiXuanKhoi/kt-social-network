@@ -7,11 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.core.userdetails.User;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -28,11 +24,13 @@ public class Requests {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private UUID requestId;
 
-    @Column(name = "request_to")
-    private User requestTo;
+    @ManyToOne
+    @JoinColumn(name = "request_to")
+    private Users requestTo;
 
-    @Column(name = "request_from")
-    private User requestFrom;
+    @ManyToOne
+    @JoinColumn(name = "request_from")
+    private Users requestFrom;
 
     @Column(name = "request_at")
     private LocalDateTime requestAt;
