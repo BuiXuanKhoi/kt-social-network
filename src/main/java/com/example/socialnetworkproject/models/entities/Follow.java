@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.userdetails.User;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -15,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Followers {
+public class Follow {
 
 
     @Id
@@ -23,4 +25,15 @@ public class Followers {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "follower_id")
     private UUID followerId;
+
+    @Column(name = "follow_from")
+    private LocalDateTime followFrom;
+
+    @ManyToOne
+    @JoinColumn(name = "followed_id")
+    private Users followed;
+
+    @ManyToOne
+    @JoinColumn(name = "follower_id")
+    private Users follower;
 }

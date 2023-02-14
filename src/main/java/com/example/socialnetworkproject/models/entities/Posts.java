@@ -33,9 +33,20 @@ public class Posts {
     private String postContent;
 
     @Column(name = "post_visible_level")
+    @Enumerated(EnumType.STRING)
     private PostVisibleLevel postVisibleLevel;
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comments> comments;
+
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PostRecords> postRecords;
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Assets> assets;
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Expressions> expressions;
 
 }
