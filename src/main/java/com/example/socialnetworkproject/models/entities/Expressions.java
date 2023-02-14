@@ -1,13 +1,13 @@
 package com.example.socialnetworkproject.models.entities;
 
 import com.example.socialnetworkproject.constants.ExpressionType;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.UUID;
 
 @Table(name = "expressions")

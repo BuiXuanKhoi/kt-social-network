@@ -1,9 +1,10 @@
 package com.example.socialnetworkproject.models.entities;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
