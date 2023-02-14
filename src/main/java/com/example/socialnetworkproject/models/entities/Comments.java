@@ -1,6 +1,5 @@
 package com.example.socialnetworkproject.models.entities;
 
-import com.fasterxml.jackson.databind.DatabindException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
