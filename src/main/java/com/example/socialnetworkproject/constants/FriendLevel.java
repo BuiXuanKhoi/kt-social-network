@@ -1,7 +1,7 @@
 package com.example.socialnetworkproject.constants;
 
-public enum FollowerPostPriorityLevel {
-    SEE_FIRST,
+public enum FriendLevel {
     NORMAL,
-    NEVER
+    BEST_FRIEND
+
 }

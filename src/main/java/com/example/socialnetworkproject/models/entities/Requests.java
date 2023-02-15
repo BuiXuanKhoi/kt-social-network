@@ -26,13 +26,14 @@ public class Requests {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private UUID requestId;
 
-    @ManyToOne
-    @JoinColumn(name = "request_to")
-    private Users requestTo;
 
     @ManyToOne
-    @JoinColumn(name = "request_from")
+    @JoinColumn(name = "request_from_id")
     private Users requestFrom;
+
+    @ManyToOne
+    @JoinColumn(name = "request_to_id")
+    private Users requestTo;
 
     @Column(name = "request_at")
     private LocalDateTime requestAt;
@@ -40,4 +41,7 @@ public class Requests {
     @Column(name = "request_status")
     @Enumerated(EnumType.STRING)
     private RequestStatus requestStatus;
+
+    @OneToOne(mappedBy = "requests", cascade = CascadeType.ALL)
+    private FriendRequest friendRequest;
 }

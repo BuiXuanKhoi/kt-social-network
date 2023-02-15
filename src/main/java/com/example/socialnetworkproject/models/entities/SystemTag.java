@@ -7,31 +7,32 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "hash_tags")
+@Table(name = "system_tags")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Hashtags {
+public class SystemTag {
 
     @Id
+    @Column(name = "system_tag_id")
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "hash_tag_id")
-    private UUID hashtagId;
+    private UUID systemTagId;
 
-    @Column(name = "hash_tag_name")
-    private String hashtagName;
+    @Column(name = "system_tag_name")
+    private String systemTagName;
 
-    @Column(name = "hash_tag_description", columnDefinition = "text")
-    private String hashtagDescription;
+    @Column(name = "system_tag_description")
+    private String systemTagDescription;
 
-    @OneToMany(mappedBy = "hashtags", cascade = CascadeType.ALL)
-    private List<UserTagged> userTagged;
+    @OneToMany(mappedBy = "systemTag", cascade = CascadeType.ALL)
+    private List<SystemTagged> systemTaggeds;
 
 
 }

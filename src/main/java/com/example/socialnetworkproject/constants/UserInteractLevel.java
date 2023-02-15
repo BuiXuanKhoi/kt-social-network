@@ -1,6 +1,6 @@
 package com.example.socialnetworkproject.constants;
 
-public enum UserInterractLevel {
+public enum UserInteractLevel {
     NORMAL,
     FRIEND,
     FOLLOW,

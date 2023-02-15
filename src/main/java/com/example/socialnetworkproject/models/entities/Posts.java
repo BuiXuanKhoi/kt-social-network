@@ -37,6 +37,9 @@ public class Posts {
     @Enumerated(EnumType.STRING)
     private PostVisibleLevel postVisibleLevel;
 
+    @Column(name = "is_commet_allow")
+    private Boolean isCommentAllowed;
+
     @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comments> comments;
 
@@ -49,5 +52,14 @@ public class Posts {
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Expressions> expressions;
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY)
+    private List<UserTagged> userTaggeds;
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY)
+    private List<SystemTagged> systemTaggeds;
+
+    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
+    private List<PostNotification> postNotifications;
 
 }

@@ -1,7 +1,5 @@
 package com.example.socialnetworkproject.models.entities;
 
-
-import com.example.socialnetworkproject.constants.FriendLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,18 +8,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "friends")
+@Table(name = "friend_request")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class Friends extends Relations {
-
+public class FriendRequest extends Requests{
 
     @OneToOne
-    @JoinColumn(name = "relation_id")
-    private Relations relation;
-
-    @Column(name = "friend_level")
-    private FriendLevel friendLevel;
+    @JoinColumn(name = "request_id")
+    private Requests requests;
 }

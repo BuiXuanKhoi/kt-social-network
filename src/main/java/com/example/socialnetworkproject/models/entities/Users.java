@@ -38,24 +38,37 @@ public class Users {
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;
 
-    @OneToOne(mappedBy = "users", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "users")
     private Information information;
 
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Expressions> expressions;
 
 
-    @OneToMany(mappedBy = "follower", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Follow> followers;
 
-    @OneToMany(mappedBy = "followed", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Follow> followeds;
+    @OneToMany(mappedBy = "requestFrom", cascade = CascadeType.ALL)
+    private List<Requests> requestReceived;
 
-    @OneToMany(mappedBy = "requestFrom", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Requests> requestFrom;
+    @OneToMany(mappedBy = "requestTo", cascade = CascadeType.ALL)
+    private List<Requests> requestSent;
 
-    @OneToMany(mappedBy = "requestTo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Requests> requestTo;
+    @OneToMany(mappedBy = "firstUser", cascade = CascadeType.ALL)
+    private List<Conversations> conversationsAsFirst;
+
+    @OneToMany(mappedBy = "secondUser", cascade = CascadeType.ALL)
+    private List<Conversations> conversationsAsSecond;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Notifications> notifications;
+
+    @OneToMany(mappedBy = "relationFrom", cascade = CascadeType.ALL)
+    private List<Relations> relationFrom;
+
+    @OneToMany(mappedBy = "relationTo", cascade = CascadeType.ALL)
+    private List<Relations> relationTo;
+
+    @OneToMany(mappedBy = "sharedFrom", cascade = CascadeType.ALL)
+    private List<SharedPosts> sharedPosts;
 
 
 
