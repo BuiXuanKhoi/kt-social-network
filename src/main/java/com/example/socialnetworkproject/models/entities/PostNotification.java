@@ -1,13 +1,13 @@
 package com.example.socialnetworkproject.models.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "post_notification")

@@ -1,11 +1,13 @@
 package com.example.socialnetworkproject.models.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.User;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
