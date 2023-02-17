@@ -23,5 +23,6 @@ public class Friends extends Relations {
     private Relations relation;
 
     @Column(name = "friend_level")
+    @Enumerated(EnumType.STRING)
     private FriendLevel friendLevel;
 }

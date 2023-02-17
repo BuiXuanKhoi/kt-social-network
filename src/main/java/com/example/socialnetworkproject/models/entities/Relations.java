@@ -38,6 +38,6 @@ public class Relations {
     @OneToOne(mappedBy = "relation", cascade = CascadeType.ALL)
     private Friends friends;
 
-    @OneToOne(mappedBy = "follow", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "relations", cascade = CascadeType.ALL)
     private Follow follow;
 }

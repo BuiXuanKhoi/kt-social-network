@@ -24,6 +24,7 @@ public class UserTagged {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private UUID userTaggedId;
 
+    @Column(name = "tagged_date")
     private LocalDateTime taggedDate;
 
     @ManyToOne
