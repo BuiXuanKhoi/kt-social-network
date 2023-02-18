@@ -1,14 +1,17 @@
 package com.example.socialnetworkproject.models.entities;
 
 import com.example.socialnetworkproject.constants.ExpressionType;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+
 import javax.persistence.*;
 import java.util.UUID;
+
 
 @Table(name = "expressions")
 @Entity
@@ -23,6 +26,7 @@ public class Expressions {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private UUID expressionId;
+
 
     @Column(name = "expression_type")
     @Enumerated(EnumType.STRING)

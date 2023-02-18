@@ -1,6 +1,7 @@
 package com.example.socialnetworkproject.models.entities;
 
 
+
 import com.example.socialnetworkproject.constants.FriendLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,3 +27,4 @@ public class Friends extends Relations {
     @Enumerated(EnumType.STRING)
     private FriendLevel friendLevel;
 }
+

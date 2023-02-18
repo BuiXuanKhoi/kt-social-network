@@ -1,5 +1,6 @@
 package com.example.socialnetworkproject.models.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,3 +42,4 @@ public class Relations {
     @OneToOne(mappedBy = "relations", cascade = CascadeType.ALL)
     private Follow follow;
 }
+

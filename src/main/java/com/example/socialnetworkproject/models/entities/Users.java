@@ -1,15 +1,20 @@
 package com.example.socialnetworkproject.models.entities;
 
 
+
+import com.example.socialnetworkproject.constants.Role;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {@Index(name = "idx_user_name", columnList = "user_name")
+                                    ,@Index(name = "idx_email", columnList = "user_email")
+                                    ,@Index(name = "idx_user_uuid",columnList = "user_id")})
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,6 +36,10 @@ public class Users {
 
     @Column(name = "user_email")
     private String email;
+
+    @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Posts> posts;
@@ -61,11 +70,11 @@ public class Users {
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Notifications> notifications;
 
-    @OneToMany(mappedBy = "relationFrom", cascade = CascadeType.ALL)
-    private List<Relations> relationFrom;
-
-    @OneToMany(mappedBy = "relationTo", cascade = CascadeType.ALL)
-    private List<Relations> relationTo;
+//    @OneToMany(mappedBy = "relationFrom", cascade = CascadeType.ALL)
+//    private List<Relations> relationFrom;
+//
+//    @OneToMany(mappedBy = "relationTo", cascade = CascadeType.ALL)
+//    private List<Relations> relationTo;
 
     @OneToMany(mappedBy = "sharedFrom", cascade = CascadeType.ALL)
     private List<SharedPosts> sharedPosts;

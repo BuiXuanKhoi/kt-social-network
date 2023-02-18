@@ -1,15 +1,20 @@
 package com.example.socialnetworkproject.models.entities;
 
 import com.example.socialnetworkproject.constants.FollowVisibleLevel;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
+
 
 @Entity
-@Table(name = "followers")
+@Table(name = "follows")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,7 +25,9 @@ public class Follow extends Relations {
     @Enumerated(EnumType.STRING)
     private FollowVisibleLevel followVisibleLevel;
 
-    @OneToOne
+    @OneToOne(mappedBy = "follow", cascade = CascadeType.ALL)
     @JoinColumn(name = "relation_id")
     private Relations relations;
+
+
 }

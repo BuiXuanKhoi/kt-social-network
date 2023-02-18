@@ -2,12 +2,14 @@ package com.example.socialnetworkproject.models.entities;
 
 import com.example.socialnetworkproject.constants.PostVisibleLevel;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;

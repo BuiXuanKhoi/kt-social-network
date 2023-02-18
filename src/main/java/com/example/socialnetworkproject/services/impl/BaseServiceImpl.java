@@ -24,11 +24,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
     @Override
     public T findById(UUID id) {
-        Optional<T> record = baseRepository.findById(id);
-
-        return record.orElseThrow(
-                () -> new NullPointerException("Null")
-        );
+        return baseRepository.findById(id)
+                .orElseThrow(
+                        () -> new NullPointerException("Null")
+                );
     }
 
     @Override
