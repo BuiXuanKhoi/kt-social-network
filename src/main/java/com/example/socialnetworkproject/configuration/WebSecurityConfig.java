@@ -35,7 +35,7 @@ public class WebSecurityConfig{
         http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/auth/signup").permitAll()
+                .antMatchers("/api/auth/signup").permitAll()
                 .anyRequest().authenticated();
         return http.build();
     }

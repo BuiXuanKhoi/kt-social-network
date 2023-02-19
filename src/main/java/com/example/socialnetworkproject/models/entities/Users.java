@@ -2,11 +2,15 @@ package com.example.socialnetworkproject.models.entities;
 
 
 
+import com.example.socialnetworkproject.models.entities.document.UserDocument;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.solr.core.mapping.SolrDocument;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,11 +31,14 @@ public class Users {
     @Column(name = "user_id")
     private UUID userId;
 
+
     @Column(name = "user_name")
     private String userName;
 
+
     @Column(name = "password")
     private String password;
+
 
     @Column(name = "user_email")
     private String email;
@@ -73,8 +80,5 @@ public class Users {
 
     @OneToMany(mappedBy = "sharedFrom", cascade = CascadeType.ALL)
     private List<SharedPosts> sharedPosts;
-
-
-
 
 }

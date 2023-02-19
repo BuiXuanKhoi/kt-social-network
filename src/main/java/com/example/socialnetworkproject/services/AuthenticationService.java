@@ -1,9 +1,7 @@
 package com.example.socialnetworkproject.services;
 
-import com.example.socialnetworkproject.models.entities.DTO.SignUpRequest;
-import com.example.socialnetworkproject.models.entities.Users;
-import org.springframework.http.ResponseEntity;
+import com.example.socialnetworkproject.models.entities.DTO.request.SignUpRequest;
 
 public interface AuthenticationService {
-   Users register(SignUpRequest request);
+   void register(SignUpRequest request);
 }
