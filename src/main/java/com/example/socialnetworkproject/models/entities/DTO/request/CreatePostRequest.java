@@ -1,15 +1,22 @@
 package com.example.socialnetworkproject.models.entities.DTO.request;
 
-import com.example.socialnetworkproject.models.entities.Hashtags;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class CreatePostRequest {
     private String postContent;
     private String postVisibleLevel;
-    private boolean isCommentAllowed;
-    private List<Hashtags> hashtags;
+    private Boolean isCommentAllowed;
+    private List<UUID> hashtags;
+    private MultipartFile[] files;
 }

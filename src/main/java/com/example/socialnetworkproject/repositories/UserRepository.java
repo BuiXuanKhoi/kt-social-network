@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-
 public interface UserRepository extends BaseRepository<Users> {
 
     @Query(value = "SELECT * FROM users WHERE users.user_name = :userName",

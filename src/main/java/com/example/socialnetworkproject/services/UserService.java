@@ -1,5 +1,6 @@
 package com.example.socialnetworkproject.services;
 
+import com.example.socialnetworkproject.models.entities.Posts;
 import com.example.socialnetworkproject.models.entities.Users;
 
 import java.util.List;
@@ -12,6 +13,4 @@ public interface UserService extends BaseService<Users> {
     Users findLocalUser();
 
     Users findByEmail(String email);
-
-
 }

@@ -1,7 +1,6 @@
 package com.example.socialnetworkproject.services.impl;
 
 import com.example.socialnetworkproject.constants.Role;
-import com.example.socialnetworkproject.exceptions.WrongCredentialException;
 import com.example.socialnetworkproject.models.entities.DTO.responds.LoginRespond;
 import com.example.socialnetworkproject.models.entities.DTO.request.LoginRequest;
 import com.example.socialnetworkproject.models.entities.DTO.request.SignUpRequest;
@@ -16,6 +15,7 @@ import com.example.socialnetworkproject.validation.Validator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +25,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -70,6 +71,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Information information = new Information();
         BeanUtils.copyProperties(request, information);
 
+        String expectRole = request.getRole();
+        Role role = Role.of(expectRole);
+        users.setRole(role);
+
         users.setInformation(information);
 
         return userRepository.save(users);
@@ -77,37 +82,33 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public LoginRespond login(LoginRequest request) {
-        String loginEmail = request.getEmail();
+        String loginUserName = request.getUserName();
         String loginPassword = request.getPassword();
 
-        Users users = userService.findByEmail(loginEmail);
-        String actualPassword = users.getPassword();
+        Users users = userRepository.findByUserName(loginUserName)
+                                    .orElseThrow(
+                                            () -> new BadCredentialsException("Your password or username is wrong, please check again")
+                                    );
 
-
-        if (!passwordEncoder.matches(loginPassword, actualPassword)){
-            throw new WrongCredentialException("Wrong password");
-        }
-        String actualUserName = users.getUserName();
         Role role = users.getRole();
-        List<GrantedAuthority> authorities = new LinkedList<>();
+        Collection<GrantedAuthority> authorities = new LinkedList<>();
         authorities.add(new SimpleGrantedAuthority(role.toString()));
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginEmail,
+                        loginUserName,
                         loginPassword,
                         authorities
                 )
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        String jwtToken = JwtUtils.generateByUserName(actualUserName);
+        String jwtToken = JwtUtils.generateByUserName(loginUserName);
 
         return LoginRespond.builder()
                            .refreshToken("not have yet")
                            .timestamp(LocalDateTime.now())
-                           .userName(actualUserName)
+                           .userName(loginUserName)
                            .jwt(jwtToken)
                            .build();
     }

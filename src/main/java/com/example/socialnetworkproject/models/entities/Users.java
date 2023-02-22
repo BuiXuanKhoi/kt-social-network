@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users", indexes = {@Index(name = "idx_user_name", columnList = "user_name")
-                                    ,@Index(name = "idx_email", columnList = "user_email")
-                                    ,@Index(name = "idx_user_uuid",columnList = "user_id")})
+@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -47,13 +45,11 @@ public class Users {
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "users", cascade = CascadeType.ALL)
     private Information information;
 
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Expressions> expressions;
-
-
 
     @OneToMany(mappedBy = "requestFrom", cascade = CascadeType.ALL)
     private List<Requests> requestReceived;
@@ -70,11 +66,11 @@ public class Users {
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Notifications> notifications;
 
-//    @OneToMany(mappedBy = "relationFrom", cascade = CascadeType.ALL)
-//    private List<Relations> relationFrom;
-//
-//    @OneToMany(mappedBy = "relationTo", cascade = CascadeType.ALL)
-//    private List<Relations> relationTo;
+    @OneToMany(mappedBy = "relationFrom", cascade = CascadeType.ALL)
+    private List<Relations> relationFrom;
+
+    @OneToMany(mappedBy = "relationTo", cascade = CascadeType.ALL)
+    private List<Relations> relationTo;
 
     @OneToMany(mappedBy = "sharedFrom", cascade = CascadeType.ALL)
     private List<SharedPosts> sharedPosts;

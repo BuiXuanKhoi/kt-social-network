@@ -19,13 +19,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@DiscriminatorColumn(name = "follows")
 public class Follow extends Relations {
 
     @Column(name = "follow_visible_level")
     @Enumerated(EnumType.STRING)
     private FollowVisibleLevel followVisibleLevel;
 
-    @OneToOne(mappedBy = "follow", cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "relation_id")
     private Relations relations;
 

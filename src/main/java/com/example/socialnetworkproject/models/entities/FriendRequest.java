@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "friend_request")
 @NoArgsConstructor
 @AllArgsConstructor
+@DiscriminatorColumn(name = "friend_request")
 @Setter
 @Getter
 public class FriendRequest extends Requests{

@@ -16,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Setter
 @Getter
+@DiscriminatorColumn(name = "friends")
 public class Friends extends Relations {
 
 

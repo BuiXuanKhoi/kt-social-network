@@ -1,6 +1,8 @@
 package com.example.socialnetworkproject.services.impl;
 
 import com.example.socialnetworkproject.exceptions.ResourceNotFoundException;
+import com.example.socialnetworkproject.models.entities.Posts;
+import com.example.socialnetworkproject.models.entities.Relations;
 import com.example.socialnetworkproject.models.entities.Users;
 import com.example.socialnetworkproject.repositories.BaseRepository;
 import com.example.socialnetworkproject.repositories.UserRepository;
@@ -9,10 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserServiceImpl extends BaseServiceImpl<Users> implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {

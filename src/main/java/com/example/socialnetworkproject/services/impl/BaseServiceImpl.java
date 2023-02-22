@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class BaseServiceImpl<T> implements BaseService<T> {
 
-    private BaseRepository<T> baseRepository;
+    private final BaseRepository<T> baseRepository;
 
     public BaseServiceImpl(BaseRepository<T> baseRepository) {
         this.baseRepository = baseRepository;

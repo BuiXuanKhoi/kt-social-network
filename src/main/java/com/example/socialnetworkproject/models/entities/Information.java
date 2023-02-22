@@ -47,7 +47,7 @@ public class Information {
     @JoinColumn(name = "background_asset_id")
     private Assets backgroundAsset;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Users users;
 
