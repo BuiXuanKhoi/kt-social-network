@@ -1,12 +1,13 @@
 package com.example.socialnetworkproject.models.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.mail.Message;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
