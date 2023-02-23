@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,8 +58,8 @@ public class PostServiceImpl extends BaseServiceImpl<Posts> implements PostServi
     }
 
     @Override
-    public List<Posts> retrieveAllByLocalUser() {
-        Users users = userService.findLocalUser();
+    public List<Posts> retrieveAllByUser(UUID userId) {
+        Users users = userService.findById(userId);
         return users.getPosts()
                     .stream()
                     .sorted(Comparator.comparing(Posts::getPostId).reversed())

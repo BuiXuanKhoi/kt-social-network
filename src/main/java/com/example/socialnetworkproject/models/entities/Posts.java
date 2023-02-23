@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,6 +42,9 @@ public class Posts {
 
     @Column(name = "is_commet_allow")
     private Boolean isCommentAllowed;
+
+    @Column(name = "post_create_date")
+    private LocalDateTime createDate;
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comments> comments;

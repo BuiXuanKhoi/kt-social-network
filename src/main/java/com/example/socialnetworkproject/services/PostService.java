@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface PostService extends BaseService<Posts> {
 
     Posts create(CreatePostRequest createPostRequest);
-    List<Posts> retrieveAllByLocalUser();
+    List<Posts> retrieveAllByUser(UUID userId);
 
     List<Posts> retrieveNewsFeed();
 

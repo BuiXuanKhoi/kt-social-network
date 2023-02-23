@@ -38,13 +38,13 @@ public class PostController {
         createPostRequest.setFiles(files);
         createPostRequest.setIsCommentAllowed(isCommentAllow);
         Posts savedPost = postService.create(createPostRequest);
-        return ResponseEntity.ok(savedPost);
+        return ResponseEntity.created(null).body(savedPost);
     }
 
 
-    @GetMapping
-    public List<Posts> retrieveAllPosts(){
-        return null;
+    @GetMapping("/users/{userId}")
+    public List<Posts> retrieveAllPostsByUser(@PathVariable UUID userId){
+        return this.postService.retrieveAllByUser(userId);
     }
 
     @GetMapping("/newsfeed")
